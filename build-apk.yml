@@ -23,15 +23,15 @@ jobs:
       - name: Extract Android project
         run: |
           unzip -q FeatherRec-Android-Source.zip -d source
-          chmod +x source/gradlew
+          chmod +x source/FeatherRec/gradlew
 
       - name: Build APK
-        working-directory: source
+        working-directory: source/FeatherRec
         run: ./gradlew --no-daemon assembleDebug
 
       - uses: actions/upload-artifact@v4
         with:
           name: FeatherRec-APK
-          path: source/app/build/outputs/apk/debug/*.apk
+          path: source/FeatherRec/app/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           
